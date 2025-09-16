@@ -1,0 +1,479 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color palette for emergency preparedness theme */
+  --background: oklch(1 0 0); /* Pure white */
+  --foreground: oklch(0.2 0 240); /* Deep blue #003366 */
+  --card: oklch(0.98 0.01 240 / 0.8); /* Glassmorphism white with transparency */
+  --card-foreground: oklch(0.2 0 240); /* Deep blue text on cards */
+  --popover: oklch(0.98 0.01 240 / 0.9); /* Glassmorphism for popovers */
+  --popover-foreground: oklch(0.2 0 240); /* Deep blue text on popovers */
+  --primary: oklch(0.2 0 240); /* Deep blue #003366 for primary actions */
+  --primary-foreground: oklch(1 0 0); /* White text on primary */
+  --secondary: oklch(0.65 0.15 25); /* Orange #ff5722 for alerts */
+  --secondary-foreground: oklch(1 0 0); /* White text on secondary */
+  --muted: oklch(0.96 0.01 240); /* Light grey #f0f4f8 */
+  --muted-foreground: oklch(0.45 0.02 240); /* Muted text color */
+  --accent: oklch(0.65 0.12 140); /* Green #4caf50 for success */
+  --accent-foreground: oklch(1 0 0); /* White text on accent */
+  --destructive: oklch(0.55 0.15 15); /* Red #f44336 for errors */
+  --destructive-foreground: oklch(1 0 0); /* White text on destructive */
+  --border: oklch(0.9 0.01 240); /* Light border #e0e0e0 */
+  --input: oklch(0.98 0.01 240); /* Input background #f9fafb */
+  --ring: oklch(0.2 0 240 / 0.2); /* Focus ring with transparency */
+  --chart-1: oklch(0.65 0.15 35); /* Orange for charts */
+  --chart-2: oklch(0.55 0.15 240); /* Blue for charts */
+  --chart-3: rgb(68, 134, 53); /* Green for charts */
+  --chart-4: oklch(0.65 0.15 25); /* Orange variant for charts */
+  --chart-5: oklch(0.45 0.15 300); /* Purple for charts */
+  --radius: 0.75rem; /* Increased radius for modern look */
+  --sidebar: oklch(0.96 0.01 240); /* Light sidebar background */
+  --sidebar-foreground: oklch(0.2 0 240); /* Deep blue sidebar text */
+  --sidebar-primary: oklch(1 0 0); /* White sidebar primary */
+  --sidebar-primary-foreground: oklch(0.2 0 240); /* Deep blue sidebar primary text */
+  --sidebar-accent: oklch(0.65 0.15 25); /* Orange sidebar accent */
+  --sidebar-accent-foreground: oklch(1 0 0); /* White sidebar accent text */
+  --sidebar-border: oklch(0.9 0.01 240); /* Light sidebar border */
+  --sidebar-ring: oklch(0.2 0 240 / 0.2); /* Sidebar focus ring */
+}
+
+.dark {
+  --background: oklch(0.08 0.02 240); /* Dark blue background */
+  --foreground: oklch(0.98 0.01 240); /* Light text */
+  --card: oklch(0.12 0.02 240 / 0.8); /* Dark glassmorphism cards */
+  --card-foreground: oklch(0.98 0.01 240); /* Light text on dark cards */
+  --popover: oklch(0.12 0.02 240 / 0.9); /* Dark glassmorphism popovers */
+  --popover-foreground: oklch(0.98 0.01 240); /* Light text on dark popovers */
+  --primary: oklch(0.98 0.01 240); /* Light primary in dark mode */
+  --primary-foreground: oklch(0.2 0 240); /* Dark text on light primary */
+  --secondary: oklch(0.65 0.15 25); /* Orange #ff5722 for better contrast */
+  --secondary-foreground: oklch(0.08 0.02 240); /* Dark text on orange secondary */
+  --muted: oklch(0.15 0.02 240); /* Dark muted */
+  --muted-foreground: oklch(0.7 0.01 240); /* Muted text in dark mode */
+  --accent: oklch(0.15 0.02 240); /* Dark accent */
+  --accent-foreground: oklch(0.98 0.01 240); /* Light text on dark accent */
+  --destructive: oklch(0.4 0.14 15); /* Dark mode destructive */
+  --destructive-foreground: oklch(0.65 0.15 15); /* Destructive text in dark mode */
+  --border: oklch(0.15 0.02 240); /* Dark border */
+  --input: oklch(0.15 0.02 240); /* Dark input */
+  --ring: oklch(0.4 0.02 240); /* Dark focus ring */
+  --chart-1: oklch(0.5 0.15 264); /* Dark mode chart colors */
+  --chart-2: oklch(0.7 0.12 162);
+  --chart-3: oklch(0.77 0.12 70);
+  --chart-4: oklch(0.63 0.15 304);
+  --chart-5: oklch(0.65 0.15 16);
+  --sidebar: oklch(0.12 0.02 240); /* Dark sidebar */
+  --sidebar-foreground: oklch(0.98 0.01 240); /* Light sidebar text */
+  --sidebar-primary: oklch(0.5 0.15 264); /* Sidebar primary in dark mode */
+  --sidebar-primary-foreground: oklch(0.98 0.01 240); /* Light sidebar primary text */
+  --sidebar-accent: oklch(0.15 0.02 240); /* Dark sidebar accent */
+  --sidebar-accent-foreground: oklch(0.98 0.01 240); /* Light sidebar accent text */
+  --sidebar-border: oklch(0.15 0.02 240); /* Dark sidebar border */
+  --sidebar-ring: oklch(0.4 0.02 240); /* Dark sidebar focus ring */
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added glassmorphism utility classes */
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-background/80 border border-border/50 shadow-lg;
+  }
+
+  .glass-strong {
+    @apply backdrop-blur-lg bg-background/90 border border-border/60 shadow-2xl;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Added animation utility classes */
+  .animate-float {
+    animation: float linear infinite;
+  }
+
+  .animate-flow-1 {
+    animation: flow-1 8s ease-in-out infinite;
+  }
+
+  .animate-flow-2 {
+    animation: flow-2 12s ease-in-out infinite 2s;
+  }
+
+  .animate-flow-3 {
+    animation: flow-3 10s ease-in-out infinite 4s;
+  }
+
+  .animate-particle {
+    animation: particle linear infinite;
+  }
+
+  /* Enhanced animation utility classes for continuous flow */
+  .animate-float-enhanced {
+    animation: float-enhanced 20s ease-in-out infinite;
+  }
+
+  .animate-float-icon {
+    animation: float-icon 25s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 15s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift-reverse {
+    animation: gradient-shift-reverse 18s ease-in-out infinite;
+  }
+
+  .animate-flow-continuous-1 {
+    animation: flow-continuous-1 12s linear infinite;
+  }
+
+  .animate-flow-continuous-2 {
+    animation: flow-continuous-2 16s linear infinite 3s;
+  }
+
+  .animate-flow-continuous-3 {
+    animation: flow-continuous-3 14s linear infinite 6s;
+  }
+
+  .animate-flow-reverse-1 {
+    animation: flow-reverse-1 18s linear infinite 2s;
+  }
+
+  .animate-particle-enhanced {
+    animation: particle-enhanced 15s linear infinite;
+  }
+
+  /* Added map marker animations for hover and bounce effects */
+  .animate-marker-bounce {
+    animation: marker-bounce 2s ease-in-out infinite;
+  }
+
+  .animate-marker-glow {
+    animation: marker-glow 1.5s ease-in-out infinite alternate;
+  }
+
+  .animate-marker-pulse {
+    animation: marker-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-marker-float {
+    animation: marker-float 3s ease-in-out infinite;
+  }
+}
+
+/* Added flowing background animation keyframes */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px) rotate(270deg);
+  }
+}
+
+@keyframes flow-1 {
+  0% {
+    stroke-dasharray: 0 1000;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 100 1000;
+    stroke-dashoffset: -200;
+  }
+  100% {
+    stroke-dasharray: 0 1000;
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes flow-2 {
+  0% {
+    stroke-dasharray: 0 800;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 80 800;
+    stroke-dashoffset: -160;
+  }
+  100% {
+    stroke-dasharray: 0 800;
+    stroke-dashoffset: -800;
+  }
+}
+
+@keyframes flow-3 {
+  0% {
+    stroke-dasharray: 0 600;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 60 600;
+    stroke-dashoffset: -120;
+  }
+  100% {
+    stroke-dasharray: 0 600;
+    stroke-dashoffset: -600;
+  }
+}
+
+@keyframes particle {
+  0% {
+    transform: translateY(100vh) translateX(0px) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) translateX(10px) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(-10vh) translateX(-10px) scale(1);
+  }
+  100% {
+    transform: translateY(-20vh) translateX(0px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Enhanced animation keyframes for continuous smooth flow */
+@keyframes float-enhanced {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-15px) translateX(-15px) scale(0.9);
+  }
+  75% {
+    transform: translateY(-45px) translateX(10px) scale(1.05);
+  }
+}
+
+@keyframes float-icon {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+    opacity: 0.05;
+  }
+  25% {
+    transform: translateY(-20px) translateX(15px) rotate(90deg) scale(1.1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px) rotate(180deg) scale(0.9);
+    opacity: 0.1;
+  }
+  75% {
+    transform: translateY(-35px) translateX(8px) rotate(270deg) scale(1.05);
+    opacity: 0.12;
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    transform: translateX(0%) translateY(0%) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(10%) translateY(-5%) rotate(180deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes gradient-shift-reverse {
+  0%,
+  100% {
+    transform: translateX(0%) translateY(0%) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(-8%) translateY(3%) rotate(-180deg);
+    opacity: 0.4;
+  }
+}
+
+@keyframes flow-continuous-1 {
+  0% {
+    stroke-dasharray: 0 1200;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 120 1200;
+    stroke-dashoffset: -1200;
+  }
+}
+
+@keyframes flow-continuous-2 {
+  0% {
+    stroke-dasharray: 0 1000;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 100 1000;
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes flow-continuous-3 {
+  0% {
+    stroke-dasharray: 0 800;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 80 800;
+    stroke-dashoffset: -800;
+  }
+}
+
+@keyframes flow-reverse-1 {
+  0% {
+    stroke-dasharray: 0 1100;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 110 1100;
+    stroke-dashoffset: 1100;
+  }
+}
+
+@keyframes particle-enhanced {
+  0% {
+    transform: translateY(100vh) translateX(0px) scale(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+    transform: translateY(95vh) translateX(5px) scale(1);
+  }
+  95% {
+    opacity: 0.3;
+    transform: translateY(-5vh) translateX(-5px) scale(0.8);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Added keyframes for map marker animations */
+@keyframes marker-bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -8px, 0) scale(1.1);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0) scale(1.05);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0) scale(1.02);
+  }
+}
+
+@keyframes marker-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    filter: brightness(1);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes marker-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes marker-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
